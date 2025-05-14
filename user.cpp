@@ -410,7 +410,68 @@ void DrawDeathScreen(Context &ctx) {}
 //
 // Возможное решение может занимать примерно N строк.
 //
-void DrawGameOverScreen(Context &ctx) {}
+void DrawGameOverScreen(Context &ctx) {
+    int x = 150, y = 200, width = ctx.screen_size.x - 300,
+        height = ctx.screen_size.y - 350;
+    DrawRectangle(x, y, width, height, Color{170, 0, 0, 255});
+    DrawRectangleLinesEx(
+        {150, 200, ctx.screen_size.x - 300, ctx.screen_size.y - 350},
+        8.0f,
+        Color{120, 0, 0, 255}
+    );
+    const char *text = "YOU DIED";
+    int text_width = MeasureText(text, 40);
+    DrawText(
+        text,
+        ctx.screen_size.x / 2 - text_width / 2,
+        ctx.screen_size.y / 2 - 50,
+        40,
+        BLACK
+    );
+    const float rectWidth = 50.0f / 8;
+    const float rectHeight = 200.0f / 4;
+    const float centerX = ctx.screen_size.x / 2;
+    const float centerY = ctx.screen_size.y / 2;
+    DrawRectanglePro(
+        {centerX + 50, centerY + 40, rectWidth, rectHeight},
+        {rectWidth / 2, rectHeight / 2},
+        45.0f,
+        BLACK
+    );
+    DrawRectanglePro(
+        {centerX - 50, centerY + 40, rectWidth, rectHeight},
+        {rectWidth / 2, rectHeight / 2},
+        45.0f,
+        BLACK
+    );
+    DrawRectanglePro(
+        {centerX + 50, centerY + 40, rectWidth, rectHeight},
+        {rectWidth / 2, rectHeight / 2},
+        135.0f,
+        BLACK
+    );
+    DrawRectanglePro(
+        {centerX - 50, centerY + 40, rectWidth, rectHeight},
+        {rectWidth / 2, rectHeight / 2},
+        135.0f,
+        BLACK
+    );
+    DrawRectanglePro(
+        {centerX + 15, centerY + 90, rectWidth, rectHeight + 30},
+        {rectWidth / 2, rectHeight / 2},
+        90.0f,
+        BLACK
+    );
+    const char *text1 = "Press enter to return to main menu";
+    int text_width1 = MeasureText(text1, 40);
+    DrawText(
+        text1,
+        ctx.screen_size.x / 2 - text_width1 / 5 + 13,
+        ctx.screen_size.y / 2 + 120,
+        15,
+        GRAY
+    );
+}
 
 // Задание DrawFinishScreen.
 //
