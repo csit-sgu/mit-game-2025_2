@@ -463,7 +463,12 @@ void DrawMainScreen(Context &ctx) {}
 //
 // Возможное решение может занимать примерно N строк.
 //
-void ConstructMenuScene(Context &ctx, Scene &game_scene) {}
+void ConstructMenuScene(Context &ctx, Scene &game_scene) {
+    Object bg;
+    bg.render = std::make_shared<Render>("Assets/menu_background.png");
+    bg.render->size = ctx.screen_size;
+    game_scene.push_back(bg);
+}
 
 // Задание DrawStatus.
 //
